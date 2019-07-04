@@ -1,0 +1,103 @@
+@import "../../../../styles/base/padding.scss";
+@import "../../../../styles/base/background-color.scss";
+@import "../../../../styles/base/palette.scss";
+@import "../../../../styles/base/border.scss";
+@import "../../../../styles/base/animation/fading_entrances/fadeIn.css";
+@import "../../../../styles/base/box-shadow.scss";
+
+@mixin positionOwn($position, $top: 0, $left: 0) {
+  position: $position;
+  top: $top;
+  left: $left;
+}
+
+.images {
+  margin: auto;
+  max-width: 800px;
+  height: 80%;
+
+  .images__list {
+    margin-top: 60px;
+    height: 100%;
+    width: 100%;
+
+    .list__item {
+      padding: $padding-inside-component;
+      box-sizing: border-box;
+      color: rgba($color: $primary-text-color, $alpha: 0.7);
+
+      .list__item__root {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .item__root_mask {
+          cursor: zoom-in;
+          @include positionOwn(absolute);
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          z-index: 1;
+        }
+
+        .item__root_author {
+          margin-top: $padding-between-component;
+          line-height: 18px;
+          height: 18px;
+
+          img {
+            width: 18px;
+            height: 18px;
+            float: left;
+            border-radius: $border-component;
+            padding-right: $padding-between-component;
+          }
+        }
+
+        .item__root__body {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: $border-component;
+          }
+        }
+      }
+
+      &:hover {
+        border-radius: $border-component;
+        background-color: rgba($color: $background-color-lv10, $alpha: 0.2);
+        color: $primary-text-color;
+        transition: background-color 0.5s;
+      }
+    }
+  }
+
+  .images__loading {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    left: calc(50% - 25px);
+    height: 50px;
+  }
+}
+
+.images-dialog {
+  background-color: rgba($color: $background-color-lv0, $alpha: 0.7) !important;
+  .images-dialog > &_button {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+  }
+
+  img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    margin: auto;
+  }
+}
